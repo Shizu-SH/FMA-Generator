@@ -1,0 +1,120 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+#mySidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+#mySidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+#mySidenav a:hover {
+  color: #D100FF;
+}
+
+#menuButton {
+  position: fixed;
+  z-index: 1;
+  top: 10px;
+  left: 10px;
+  font-size: 30px;
+  background-color: #111;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#main {
+  transition: margin-left 0.5s;
+  padding: 16px;
+}
+
+.menu-button {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+form {
+  margin-top: 30px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 200px;
+  padding: 8px;
+  margin: 4px 0;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.waves {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 15vh;
+  width: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.parallax {
+  animation: moving-waves 20s infinite;
+}
+
+@keyframes moving-waves {
+  0% {
+    transform: translateX(0) translateZ(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-25%) translateZ(0) scaleY(0.55);
+  }
+  100% {
+    transform: translateX(-50%) translateZ(0) scaleY(1);
+  }
+}
