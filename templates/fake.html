@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Datos Falsos</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        
+        h1, h2, h3 {
+            color: #ff00ff;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Datos Falsos</h1>
+    <h2>País: {{ country }}</h2>
+    
+    <h3>Nombre: {{ fake_data['name'] }}</h3>
+    <p>Dirección: {{ fake_data['address'] }}</p>
+    <p>Teléfono: {{ fake_data['phone'] }}</p>
+    <p>Correo Electrónico: {{ fake_data['email'] }}</p>
+    <p>Fecha de Nacimiento: {{ fake_data['birthdate'] }}</p>
+    {% if country == 'us' %}
+        <p>Número de Seguro Social: {{ fake_data['ssn'] }}</p>
+    {% elif country == 'uk' %}
+        <p>National Insurance Number: {{ fake_data['national_insurance'] }}</p>
+    {% endif %}
+    <p>Tarjeta de Crédito: {{ fake_data['credit_card'] }}</p>
+</body>
+</html>
+#Funciona correctamente
