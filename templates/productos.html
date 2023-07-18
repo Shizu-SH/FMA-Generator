@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Productos</title>
+    <style>
+        /* Estilos adicionales para la página de productos */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #ff00ff;
+        }
+
+        .product-thumbnails {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-thumbnail {
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .product-thumbnail img {
+            width: 200px;
+            height: 200px;
+        }
+
+        /* Estilos para la ventana emergente de la descripción del producto */
+        .product-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            z-index: 9999; /* Asegura que la ventana emergente esté por encima del botón de contacto */
+        }
+
+        .product-popup h2 {
+            color: #ff00ff;
+            margin-top: 0;
+        }
+
+        .product-popup p {
+            margin-bottom: 0;
+        }
+
+        .product-popup-close {
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        /* Estilos para el formulario de contacto */
+        .contact-form {
+            margin-top: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .contact-form h2 {
+            color: #ff00ff;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .contact-form button {
+            background-color: #ff00ff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Estilos para el botón de contacto */
+        .contact-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff00ff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Productos</h1>
+
+    <div class="product-thumbnails">
+        <div class="product-thumbnail" onclick="showProduct('producto1')">
+            <img src="{{ url_for('static', filename='images/shizu.sh0p.png') }}" alt="Venta de cuentas">
+        </div>
+        <div class="product-thumbnail" onclick="showProduct('producto2')">
+            <img src="{{ url_for('static', filename='images/producto2.webp') }}" alt="Venta de seguidores">
+        </div>
+        <!-- Agrega más miniaturas de productos según sea necesario -->
+    </div>
+
+    <!-- Ventana emergente de la descripción del producto -->
+    <div class="product-popup" id="product-popup">
+        <span class="product-popup-close" onclick="closeProductPopup()">&times;</span>
+        <h2 id="product-popup-title"></h2>
+        <p id="product-popup-details"></p>
+    </div>
+
+    <!-- Botón de contacto -->
+    <button class="contact-button" onclick="toggleContactForm()">Contáctame</button>
+
+<!-- Formulario de contacto -->
+<div class="contact-form" id="contact-form" style="display: none;">
+    <h2>Contacto</h2>
+    <form action="{{ url_for('enviar_correo') }}" method="post">
+        <input type="text" name="nombre" placeholder="Nombre" required><br>
+        <input type="text" name="apellido" placeholder="Apellido" required><br>
+        <input type="email" name="correo" placeholder="Correo electrónico" required><br>
+        <textarea name="mensaje" placeholder="Mensaje" required></textarea><br>
+        <input type="submit" value="Enviar">
+    </form>
+</div>
+
+
+    <script>
+        // Función para mostrar la descripción del producto seleccionado en una ventana emergente
+        function showProduct(productName) {
+            var productPopupTitleElement = document.getElementById('product-popup-title');
+            var productPopupDetailsElement = document.getElementById('product-popup-details');
+
+            // Lógica para mostrar la descripción según el producto seleccionado
+            if (productName === 'producto1') {
+                productPopupTitleElement.textContent = 'Venta de cuentas';
+                productPopupDetailsElement.textContent = 'Los precios son los de la foto, vendemos mas cuentas aparte de esa, mas informacion en mi priv (precio negociable)';
+            } else if (productName === 'producto2') {
+                productPopupTitleElement.textContent = 'Venta de Seguidores';
+                productPopupDetailsElement.textContent = 'Venta de Seguidore, Likes, Visualizaciones de todas las redes sociales. precio min. 3usd';
+            }
+
+            // Mostrar la ventana emergente de la descripción del producto
+            var productPopupElement = document.getElementById('product-popup');
+            productPopupElement.style.display = 'block';
+        }
+
+        // Función para cerrar la ventana emergente de la descripción del producto
+        function closeProductPopup() {
+            var productPopupElement = document.getElementById('product-popup');
+            productPopupElement.style.display = 'none';
+        }
+
+        // Función para mostrar u ocultar el formulario de contacto
+        function toggleContactForm() {
+            var contactFormElement = document.getElementById('contact-form');
+            contactFormElement.style.display = contactFormElement.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

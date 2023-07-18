@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        
+        h1 {
+            color: #ff00ff;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resultado:</h1>
+    {% if resultados %}
+        <ul>
+            {% for resultado in resultados %}
+                <li>{{ resultado }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se generaron resultados</p>
+    {% endif %}
+</body>
+</html>
+#Funciona correctamente

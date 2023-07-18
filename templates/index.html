@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Generador de números</title>
+  <style>
+    /* Estilos adicionales para la página de Generador de números */
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+    }
+
+    h1 {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    form {
+      background-color: #1f1f1f;
+      border-radius: 5px;
+      padding: 20px;
+      max-width: 500px;
+      margin: 20px auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #CCC;
+      margin-bottom: 10px;
+    }
+
+    button[type="submit"] {
+      background-color: #ff00ff;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #ff00ff;
+    }
+
+    /* Estilos para el menú desplegable */
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #E500B5;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #000;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+      color: #064579;
+    }
+
+    .menu-button {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      font-size: 30px;
+      color: #97006C;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .menu-button.open {
+      transform: translateX(250px);
+    }
+
+    #main {
+      transition: margin-left 0.3s;
+      padding: 20px;
+      margin-left: 0;
+    }
+
+    /* Estilos para las olas */
+    .waves {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 15vh;
+      margin-bottom: -7px;
+      min-height: 100px;
+      max-height: 150px;
+    }
+
+    /* Animación de las olas */
+    .parallax > use {
+      animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+    }
+    .parallax > use:nth-child(1) {
+      animation-delay: -2s;
+      animation-duration: 7s;
+    }
+    .parallax > use:nth-child(2) {
+      animation-delay: -3s;
+      animation-duration: 10s;
+    }
+    .parallax > use:nth-child(3) {
+      animation-delay: -4s;
+      animation-duration: 13s;
+    }
+    .parallax > use:nth-child(4) {
+      animation-delay: -5s;
+      animation-duration: 20s;
+    }
+    @keyframes move-forever {
+      0% {
+        transform: translate3d(-90px, 0, 0);
+      }
+      100% { 
+        transform: translate3d(85px, 0, 0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="mySidenav" class="sidenav">
+    <a href="/">Generador CC</a>
+    <a href="/tempmail">Temp Mail</a>
+    <a href="/fakegenerator">Generador de Datos Falsos</a>
+    <a href="/productos">Catalogo de Ventas</a>
+  </div>
+
+  <div id="main">
+    <button id="menuButton" class="menu-button" onclick="toggleNav()">&#9776;</button>
+
+    <h1>Generador de números</h1>
+    <form method="POST" action="/">
+      <label for="bin">Ingrese el BIN:</label>
+      <input type="text" name="bin" id="bin" required><br><br>
+
+      <label for="mes_caducidad">Mes de caducidad (MM):</label>
+      <input type="text" name="mes_caducidad" id="mes_caducidad"><br>
+
+      <label for="anio_caducidad">Año de caducidad (YY):</label>
+      <input type="text" name="anio_caducidad" id="anio_caducidad"><br><br>
+
+      <label for="digitos_seguridad">Código de seguridad (3 dígitos):</label>
+      <input type="text" name="digitos_seguridad" id="digitos_seguridad"><br><br>
+
+      <label for="num_resultados">Número de Resultados:</label>
+      <input type="number" name="num_resultados" id="num_resultados" min="1" required><br><br>
+
+      <button type="submit">Generar</button>
+    </form>
+
+    <div class="waves">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+          <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    var menuButton = document.getElementById("menuButton");
+    var mySidenav = document.getElementById("mySidenav");
+    var main = document.getElementById("main");
+
+    function toggleNav() {
+      if (mySidenav.style.width === "250px") {
+        mySidenav.style.width = "0";
+        main.style.marginLeft = "0";
+        menuButton.classList.remove("open");
+      } else {
+        mySidenav.style.width = "250px";
+        main.style.marginLeft = "250px";
+        menuButton.classList.add("open");
+      }
+    }
+
+    // Función para animar las olas
+    function animateWaves() {
+      var waves = document.querySelectorAll(".parallax > use");
+
+      waves.forEach(function (wave, index) {
+        var delay = index * 2; // Ajusta el retardo para cada ola
+        var duration = 7 + index * 3; // Ajusta la duración para cada ola
+        wave.style.animationDelay = "-" + delay + "s";
+        wave.style.animationDuration = duration + "s";
+      });
+    }
+
+    animateWaves(); // Llama a la función para iniciar la animación de las olas
+  </script>
+</body>
+</html>
+#Funciona correctamente
